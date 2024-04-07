@@ -9,16 +9,26 @@ import SwiftUI
 
 struct HomeView: View {
     
+    
     @State private var showProfile: Bool = false
     
     var body: some View {
+        
         ZStack {
             Color.theme.background
                 .ignoresSafeArea()
             VStack {
                 homeHeader
                 Spacer(minLength: 0)
+                ScrollView{
+                    VStack{
+                        ForEach(1...10, id: \.self) { _ in
+                            CoinRawCell(coinModel: coinModel,showHoldingColumn: true)
+                        }
+                    }
+                }
             }.padding()
+            
         }
     }
 }
