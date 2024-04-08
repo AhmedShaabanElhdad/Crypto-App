@@ -11,6 +11,8 @@ struct HomeView: View {
     
     
     @State private var showProfile: Bool = false
+    @EnvironmentObject private var viewmodel: HomeViewModel
+    
     
     var body: some View {
         
@@ -19,15 +21,22 @@ struct HomeView: View {
                 .ignoresSafeArea()
             VStack {
                 homeHeader
-                Spacer(minLength: 0)
-                ScrollView{
-                    VStack{
-                        ForEach(1...10, id: \.self) { _ in
-                            CoinRawCell(coinModel: coinModel,showHoldingColumn: true)
-                        }
-                    }
+                
+                headerTitle
+                
+                if !showProfile {
+                    showAllCoinsList(false)
+                        .transition(.move(edge: .leading))
                 }
-            }.padding()
+                else {
+                    showAllCoinsList(true)
+                        .transition(.move(edge: .trailing))
+                }
+                Spacer(minLength: 0)
+            
+            }
+            
+            
             
         }
     }
@@ -54,8 +63,38 @@ extension HomeView {
             }
         }
     }
+    
+    private func showAllCoinsList(_ showHoldingColumn:Bool) -> some View {
+        List{
+            ForEach(viewmodel.allCoins) { coin in
+                CoinRawCell(coinModel: coin,showHoldingColumn: showHoldingColumn)
+                    .listRowInsets(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
+            }
+        }.listStyle(.plain)
+            
+    }
+    
+    private var headerTitle: some View {
+        HStack{
+            Text("Coin")
+            Spacer()
+            if showProfile {
+                Text("Holding")
+            }
+            Text("Price")
+                .frame(width: UIScreen.main.bounds.width / 3.5,alignment: .trailing)
+        }.font(.caption)
+            .foregroundColor(Color.theme.accent)
+            .padding(.horizontal)
+        
+    }
+    
+    
 }
 
 #Preview {
-    HomeView()
+    NavigationView {
+        HomeView()
+            .navigationBarHidden(true)
+    }.environmentObject(DeveloperPreview.instance.viewmodel)
 }
