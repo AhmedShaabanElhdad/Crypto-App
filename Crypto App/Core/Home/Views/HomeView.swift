@@ -21,9 +21,7 @@ struct HomeView: View {
                 .ignoresSafeArea()
             VStack {
                 homeHeader
-                
                 headerTitle
-                
                 if !showProfile {
                     showAllCoinsList(false)
                         .transition(.move(edge: .leading))
@@ -33,11 +31,7 @@ struct HomeView: View {
                         .transition(.move(edge: .trailing))
                 }
                 Spacer(minLength: 0)
-            
             }
-            
-            
-            
         }
     }
 }
@@ -86,7 +80,6 @@ extension HomeView {
         }.font(.caption)
             .foregroundColor(Color.theme.accent)
             .padding(.horizontal)
-        
     }
     
     

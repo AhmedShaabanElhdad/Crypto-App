@@ -22,7 +22,6 @@ struct CoinRawCell: View {
             }
             rightColum
         }
-            
     }
 }
 
