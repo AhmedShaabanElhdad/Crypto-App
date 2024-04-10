@@ -34,8 +34,8 @@ extension CoinRawCell {
                 .font(.caption)
                 .frame(minWidth: 30)
             
-            Circle()
-                .frame(width: 30,height: 30)
+            CoinImageView(coin: coinModel)
+                    .frame(width: 30,height: 30)
             
             Text(coinModel.symbol.uppercased())
                 .foregroundColor(Color.theme.accent)
