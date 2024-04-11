@@ -22,6 +22,7 @@ struct HomeView: View {
             VStack {
                 homeHeader
                 headerTitle
+                SearchView(searchText: $viewmodel.searchText)
                 if !showProfile {
                     showAllCoinsList(false)
                         .transition(.move(edge: .leading))
