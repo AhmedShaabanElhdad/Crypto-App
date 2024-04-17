@@ -73,4 +73,7 @@ class DeveloperPreview {
         ),
         priceChangePercentage24HInCurrency: 1.2455547456659033, currentHolding: 0
       )
+
+    let staticModels = StatisticModel(title: "Market Cap", value: "20.089", precentage: 26.5)
+    let staticModels2 = StatisticModel(title: "Market Cap", value: "20.089", precentage: -26.5)
 }

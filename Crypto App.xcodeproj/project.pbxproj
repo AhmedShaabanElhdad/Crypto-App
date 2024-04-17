@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32194B562BCFDD5E001D1461 /* StaticModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32194B552BCFDD5E001D1461 /* StaticModel.swift */; };
+		32194B582BCFE0E7001D1461 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32194B572BCFE0E7001D1461 /* StatisticView.swift */; };
+		32194B5A2BD0673D001D1461 /* HomeStatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32194B592BD0673D001D1461 /* HomeStatisticView.swift */; };
 		323781AE2BBEB6DE000CD40D /* Crypto_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323781AD2BBEB6DE000CD40D /* Crypto_AppApp.swift */; };
 		323781B22BBEB6DF000CD40D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 323781B12BBEB6DF000CD40D /* Assets.xcassets */; };
 		323781B52BBEB6DF000CD40D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 323781B42BBEB6DF000CD40D /* Preview Assets.xcassets */; };
@@ -28,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32194B552BCFDD5E001D1461 /* StaticModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticModel.swift; sourceTree = "<group>"; };
+		32194B572BCFE0E7001D1461 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
+		32194B592BD0673D001D1461 /* HomeStatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStatisticView.swift; sourceTree = "<group>"; };
 		323781AA2BBEB6DE000CD40D /* Crypto App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crypto App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		323781AD2BBEB6DE000CD40D /* Crypto_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto_AppApp.swift; sourceTree = "<group>"; };
 		323781B12BBEB6DF000CD40D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				323781CB2BBFFAA1000CD40D /* CoinModel.swift */,
+				32194B552BCFDD5E001D1461 /* StaticModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -139,6 +146,7 @@
 			children = (
 				323781C32BBEFBBD000CD40D /* HomeView.swift */,
 				323781CD2BC146C2000CD40D /* CoinRawCell.swift */,
+				32194B592BD0673D001D1461 /* HomeStatisticView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -166,6 +174,7 @@
 				323781D82BC427A5000CD40D /* CoinImageView */,
 				323781C72BBFD7EC000CD40D /* CircleButtonView.swift */,
 				323781C92BBFEE33000CD40D /* CircleButtonWithAnimationView.swift */,
+				32194B572BCFE0E7001D1461 /* StatisticView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -266,7 +275,10 @@
 				323781D42BC3CEEE000CD40D /* HomeViewModel.swift in Sources */,
 				323781C02BBEC26D000CD40D /* Color.swift in Sources */,
 				323781DA2BC427D1000CD40D /* CoinImageView.swift in Sources */,
+				32194B582BCFE0E7001D1461 /* StatisticView.swift in Sources */,
 				323781CA2BBFEE34000CD40D /* CircleButtonWithAnimationView.swift in Sources */,
+				32194B562BCFDD5E001D1461 /* StaticModel.swift in Sources */,
+				32194B5A2BD0673D001D1461 /* HomeStatisticView.swift in Sources */,
 				323781CC2BBFFAA1000CD40D /* CoinModel.swift in Sources */,
 				323781D02BC159B1000CD40D /* Double.swift in Sources */,
 				323781D22BC30771000CD40D /* PreviewProvider.swift in Sources */,
