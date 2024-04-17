@@ -21,8 +21,9 @@ struct HomeView: View {
                 .ignoresSafeArea()
             VStack {
                 homeHeader
-                headerTitle
+                HomeStatisticView(showProfile: $showProfile)
                 SearchView(searchText: $viewmodel.searchText)
+                headerTitle
                 if !showProfile {
                     showAllCoinsList(false)
                         .transition(.move(edge: .leading))
