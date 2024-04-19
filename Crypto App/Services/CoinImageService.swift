@@ -26,6 +26,8 @@ class CoinImageService {
             .tryMap({ (output) -> Data in
                 guard let  response = output.response as? HTTPURLResponse , response.statusCode >= 200 && response.statusCode < 300 else {
                     throw URLError(.badServerResponse) }
+                print(response)
+                print(output.data)
                 return output.data
             })
             .subscribe(on: DispatchQueue.main)
