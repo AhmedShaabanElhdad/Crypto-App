@@ -11,6 +11,7 @@ struct HomeView: View {
     
     
     @State private var showProfile: Bool = false
+    @State private var showProfileView: Bool = false
     @EnvironmentObject private var viewmodel: HomeViewModel
     
     
@@ -19,10 +20,14 @@ struct HomeView: View {
         ZStack {
             Color.theme.background
                 .ignoresSafeArea()
+                .sheet(isPresented: $showProfileView, content: {
+                    ProtofolioView()
+                        .environmentObject(viewmodel)
+                })
             VStack {
                 homeHeader
                 HomeStatisticView(showProfile: $showProfile)
-                SearchView(searchText: $viewmodel.searchText)
+                SearchView(searchTextView: $viewmodel.searchText)
                 headerTitle
                 if !showProfile {
                     showAllCoinsList(false)
@@ -42,6 +47,11 @@ extension HomeView {
     private var homeHeader: some View {
         HStack {
             CircleButtonView(iconName: showProfile ? "plus" : "info").animation(.none)
+                .onTapGesture {
+                    if showProfile {
+                        showProfileView.toggle()
+                    }
+                }
                 .background(
                     CircleButtonWithAnimationView(animate: $showProfile)
                 )

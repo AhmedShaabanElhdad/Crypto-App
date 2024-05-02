@@ -9,23 +9,23 @@ import SwiftUI
 
 struct SearchView: View {
     
-    @Binding var searchText: String
+    @Binding var searchTextView: String
     
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(
-                    searchText.isEmpty ? Color.theme.accent : Color.theme.secondaty)
+                    searchTextView.isEmpty ? Color.theme.accent : Color.theme.secondaty)
             
-            TextField("Search by name or symbol...",text: $searchText)
+            TextField("Search by name or symbol...",text: $searchTextView)
                 .foregroundColor(Color.theme.accent)
                 .autocorrectionDisabled(true)
                 .overlay(
                     Image(systemName: "xmark.circle.fill")
                         .foregroundColor(Color.theme.accent)
-                        .opacity(searchText.isEmpty ? 0.0 : 1.0)
+                        .opacity(searchTextView.isEmpty ? 0.0 : 1.0)
                         .onTapGesture {
-                            searchText = ""
+                            searchTextView = ""
                             UIApplication.shared.endEditing()
                         }
                     ,alignment: .trailing)
@@ -42,5 +42,5 @@ struct SearchView: View {
 }
 
 #Preview {
-    SearchView(searchText: .constant(""))
+    SearchView(searchTextView: .constant(""))
 }
