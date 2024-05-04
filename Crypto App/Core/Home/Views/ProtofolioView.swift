@@ -27,26 +27,21 @@ struct ProtofolioView: View {
             }
             .navigationTitle("Edit Portfolio")
             .toolbar(content: {
+                
                 ToolbarItem(placement: .navigationBarLeading){
                     XMarkButtom()
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing){
-                    HStack(spacing: 0){
-                        Image(systemName: "checkmark")
-                            .opacity(showCheckMark ? 1.0 : 0)
-                        
-                        Button(action: {
-                            saveButtonPressed()
-                        }, label: {
-                            Text("save".uppercased())
-                        }).opacity( (selectedCoin != nil && selectedCoin?.currentHolding != Double(quantitytxt)) ? 1.0 : 0)
-                    }.font(.headline)
+                    saveButton
                 }
             })
         }
     }
 }
+
+
+// MARK Extensions
 
 extension ProtofolioView{
     private var coinLogoList: some View {
@@ -57,6 +52,7 @@ extension ProtofolioView{
                         .onTapGesture {
                             withAnimation(.easeIn){
                                 selectedCoin = coin
+                                updateSelectedCoin(coin: coin)
                             }
                         }
                         .frame(width: 75)
@@ -71,6 +67,20 @@ extension ProtofolioView{
             .padding(.leading)
         })
     }
+    
+    private var saveButton: some View {
+        HStack(spacing: 0){
+            Image(systemName: "checkmark")
+                .opacity(showCheckMark ? 1.0 : 0)
+            
+            Button(action: {
+                saveButtonPressed()
+            }, label: {
+                Text("save".uppercased())
+            }).opacity( (selectedCoin != nil && selectedCoin?.currentHolding != Double(quantitytxt)) ? 1.0 : 0)
+        }.font(.headline)
+    }
+    
     
     private var portofolioInputSection: some View {
         VStack(spacing: 10){
@@ -107,8 +117,20 @@ extension ProtofolioView{
         return 0
     }
     
+    
+    private func updateSelectedCoin(coin: CoinModel){
+        selectedCoin = coin
+        if let portofolioCoin = viewmodel.portfolioCoins.first(where: {$0.id == coin.id}), let amount = portofolioCoin.currentHolding {
+            quantitytxt = "\(amount)"
+        } else {
+            quantitytxt = ""
+        }
+    }
+    
     private func saveButtonPressed(){
-        guard let coin = selectedCoin else { return }
+        guard let coin = selectedCoin, let amount = Double(quantitytxt) else { return }
+        
+        viewmodel.updateProfileCoin(coinModel: coin, amount: amount)
         
         withAnimation(.easeIn){
             removeSelection()
