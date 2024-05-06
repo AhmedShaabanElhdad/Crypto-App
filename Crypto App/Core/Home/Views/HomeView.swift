@@ -34,7 +34,7 @@ struct HomeView: View {
                         .transition(.move(edge: .leading))
                 }
                 else {
-                    showAllCoinsList(true)
+                    showPortofolioAllCoinsList(true)
                         .transition(.move(edge: .trailing))
                 }
                 Spacer(minLength: 0)
@@ -73,6 +73,16 @@ extension HomeView {
     private func showAllCoinsList(_ showHoldingColumn:Bool) -> some View {
         List{
             ForEach(viewmodel.allCoins) { coin in
+                CoinRawCell(coinModel: coin,showHoldingColumn: showHoldingColumn)
+                    .listRowInsets(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
+            }
+        }.listStyle(.plain)
+            
+    }
+    
+    private func showPortofolioAllCoinsList(_ showHoldingColumn:Bool) -> some View {
+        List{
+            ForEach(viewmodel.portfolioCoins) { coin in
                 CoinRawCell(coinModel: coin,showHoldingColumn: showHoldingColumn)
                     .listRowInsets(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
             }
