@@ -53,6 +53,7 @@ extension ProtofolioView{
                             withAnimation(.easeIn){
                                 selectedCoin = coin
                                 updateSelectedCoin(coin: coin)
+
                             }
                         }
                         .frame(width: 75)
@@ -80,7 +81,6 @@ extension ProtofolioView{
             }).opacity( (selectedCoin != nil && selectedCoin?.currentHolding != Double(quantitytxt)) ? 1.0 : 0)
         }.font(.headline)
     }
-    
     
     private var portofolioInputSection: some View {
         VStack(spacing: 10){
