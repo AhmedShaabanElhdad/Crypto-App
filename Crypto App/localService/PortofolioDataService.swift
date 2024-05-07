@@ -36,6 +36,8 @@ class PortofolioDataService {
         }
     }
     
+
+    
     // MARK Private
     
     private func getPortofolio() {
